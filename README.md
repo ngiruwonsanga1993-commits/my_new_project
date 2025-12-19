@@ -1,75 +1,82 @@
 
-# Painting with AI
+# Environment monitoring with AI
 
 
 ## Summary
 
-Describe briefly in 2-3 sentences what your project is about. About 250 characters is a nice length! 
+AI is transforming environmental monitoring by enabling faster, more accurate, and scalable detection of changes in air, water, soil, and ecosystems. The baseline idea is that AI can process massive sensor, satellite, and IoT data streams to provide real-time insights that traditional monitoring methods cannot. 
 
 
 ## Background
 
-Which problems does your idea solve? How common or frequent is this problem? What is your personal motivation? Why is this topic important or interesting?
+One of the key advantages of AI in environmental monitoring is its ability to process data in real-time. In an era when ecological changes, such as natural disasters, can occur rapidly, it is crucial to be able to track and analyze these events in real-time. 
 
-This is how you make a list, if you need one:
-* problem 1
-* problem 2
-* etc.
+AI-powered systems can monitor everything from air quality to seismic activity, allowing scientists to detect shifts immediately and take action before conditions worsen. This speed is essential in situations like wildfires, floods, or severe storms, where timing minimizes damage and loss of life.
 
 
 ## How is it used?
 
-Describe the process of using the solution. In what kind situations is the solution needed (environment, time, etc.)? Who are the users, what kinds of needs should be taken into account?
+Aging infrastructure is a major source of environmental harm. As these systems deteriorate, their performance declines and the risk of causing significant environmental damage increases. AI enhances the efficiency of equipment and monitoring systems by ensuring they stay in top shape. 
 
-Images will make your README look nice!
-Once you upload an image to your repository, you can link link to it like this (replace the URL with file path, if you've uploaded an image to Github.)
-![Cat](https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg)
-
-If you need to resize images, you have to use an HTML tag, like this:
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg" width="300">
-
+Using predictive maintenance tools, AI can track the condition of sensors, drones and other monitoring devices, signaling when repairs or replacements are needed. This tracking helps ensure systems remain operational and reduces downtime, allowing for continuous and accurate monitoring.
 This is how you create code examples:
-```
-def main():
-   countries = ['Denmark', 'Finland', 'Iceland', 'Norway', 'Sweden']
-   pop = [5615000, 5439000, 324000, 5080000, 9609000]   # not actually needed in this exercise...
-   fishers = [1891, 2652, 3800, 11611, 1757]
 
-   totPop = sum(pop)
-   totFish = sum(fishers)
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
 
-   # write your solution here
+# -----------------------------
+# 1. Simulated Sensor Dataset
+# -----------------------------
+# Features: temperature (°C), humidity (%), CO2 (ppm)
+# Target: 0 = Safe, 1 = Alert (poor environment)
+data = {
+    "temperature": [22, 35, 28, 40, 18, 25, 30, 45, 20, 33],
+    "humidity":    [45, 20, 55, 15, 70, 50, 40, 10, 65, 25],
+    "co2":         [400, 1200, 800, 2000, 350, 600, 900, 2500, 300, 1100],
+    "status":      [0, 1, 0, 1, 0, 0, 0, 1, 0, 1]
+}
 
-   for i in range(len(countries)):
-      print("%s %.2f%%" % (countries[i], 100.0))    # current just prints 100%
+df = pd.DataFrame(data)
 
-main()
-```
+# -----------------------------
+# 2. Train/Test Split
+# -----------------------------
+X = df[["temperature", "humidity", "co2"]]
+y = df["status"]
+
+X_train, X_test, y_train, y_test = train_test_split
 
 
 ## Data sources and AI methods
-Where does your data come from? Do you collect it yourself or do you use data collected by someone else?
-If you need to use links, here's an example:
-[Twitter API](https://developer.twitter.com/en/docs)
+IoT sensors (temperature, humidity, CO₂, pollution levels)
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+Satellite imagery (climate, deforestation, land use)
+
+Public APIs (weather services, environmental agencies)
+
+Open datasets (UN, NASA, WHO, Kaggle, etc.)
 
 ## Challenges
 
-What does your project _not_ solve? Which limitations and ethical considerations should be taken into account when deploying a solution like this?
+You’re tasked with building a mini AI system that predicts whether an environment is “Safe” or “Alert” based on three sensor readings:
 
-## What next?
+Temperature (°C)
 
-How could your project grow and become something even more? What kind of skills, what kind of assistance would you  need to move on? 
+Humidity (%)
 
-
+CO₂ concentration (ppm)
 ## Acknowledgments
+I would like to express my sincere gratitude to the following:
 
-* list here the sources of inspiration 
-* do not use code, images, data etc. from others without permission
-* when you have permission to use other people's materials, always mention the original creator and the open source / Creative Commons licence they've used
-  <br>For example: [Sleeping Cat on Her Back by Umberto Salvagnin](https://commons.wikimedia.org/wiki/File:Sleeping_cat_on_her_back.jpg#filelinks) / [CC BY 2.0](https://creativecommons.org/licenses/by/2.0)
+Supervisors and Mentors – for their guidance, encouragement, and valuable feedback throughout this project.
+
+Colleagues and Classmates – for their collaboration, discussions, and support in refining ideas.
+
+Institutions and Organizations – for providing resources, facilities, and data that made this work possible.
+
+Family and Friends – for their patience, motivation, and unwavering support during the research journey.
+(https://creativecommons.org/licenses/by/2.0)
 * etc
